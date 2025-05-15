@@ -38,21 +38,30 @@ def print_animals(animals_data):
 
 
 def generate_animals_string(animals_data):
-    """Function to generate the animals string"""
+    """Function to generate the animals html string"""
     str_animals = ""
     for animal in animals_data:
         dict_taxonomy = animal['taxonomy']
         list_locations = animal['locations']
         dict_characteristics = animal['characteristics']
         str_animals += "<li class= 'cards__item'>"
+
         if 'name' in animal.keys():
-            str_animals += f"Name: {animal['name']}<br>\n"
+            str_animals += f"<div class ='card__title'> {animal['name']} </div>\n"
+
+        str_animals += "<p class ='card__text'>"
+
         if 'diet' in dict_characteristics.keys():
-            str_animals += f"Diet: {dict_characteristics['diet']}<br>\n"
-        str_animals += f"Location: {list_locations[0]}<br>\n"
+            str_animals += f"<strong>Diet:</strong> {dict_characteristics['diet']}<br>\n"
+
+        str_animals += f"<strong>Location:</strong> {list_locations[0]}<br>\n"
+
         if 'type' in dict_characteristics.keys():
-            str_animals += f"Type: {dict_characteristics['type']}<br>\n"
+            str_animals += f"<strong>Type:</strong> {dict_characteristics['type']}<br>\n"
+
+        str_animals += "</p>"
         str_animals += "</li>"
+
     return str_animals
 
 
